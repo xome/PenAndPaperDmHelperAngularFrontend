@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, BrowserAnimationsModule],
     }).compileComponents();
   });
 
@@ -14,16 +15,20 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'FrontendAngular' title`, () => {
+  it(`should have the 'DungeonMaster' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('FrontendAngular');
+    expect(app.title).toEqual('DungeonMaster');
   });
 
-  it('should render title', () => {
+
+  it('should have the toolbar', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, FrontendAngular');
-  });
+    const toolbar = compiled.querySelector('mat-drawer') as HTMLElement;
+    expect(toolbar).toBeTruthy();
+    expect(toolbar.querySelector('button')).toBeTruthy();
+  })
+
 });
