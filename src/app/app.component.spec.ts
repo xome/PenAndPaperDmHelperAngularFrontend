@@ -27,8 +27,9 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     const toolbar = compiled.querySelector('mat-drawer') as HTMLElement;
+    const matDrawerContent = compiled.querySelector('mat-drawer-content') as HTMLElement;
     expect(toolbar).toBeTruthy();
-    expect(toolbar.querySelector('button')).toBeTruthy();
+    expect(matDrawerContent.querySelector('button')).toBeTruthy();
   })
 
 });
