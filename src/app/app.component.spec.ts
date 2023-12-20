@@ -1,5 +1,5 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('AppComponent', () => {
