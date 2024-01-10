@@ -90,6 +90,18 @@
             ],
             "scripts": []
           }
+        },
+        "e2e": {
+          "builder": "@puppeteer/ng-schematics:puppeteer",
+          "options": {
+            "devServerTarget": "FrontendAngular:serve",
+            "testRunner": "jasmine"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "FrontendAngular:serve:production"
+            }
+          }
         }
       }
     }
