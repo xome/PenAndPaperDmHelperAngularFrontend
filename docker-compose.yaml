@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  dmhelper-web:
+    image: xome42/pen-and-paper-dm-helper-frontend-angular:latest
+    ports:
+      - "4200:4200"
