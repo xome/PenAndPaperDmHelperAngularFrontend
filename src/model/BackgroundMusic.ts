@@ -1,25 +1,27 @@
-class BackgroundMusic implements ChapterRecord {
-  private _name: string;
-  private _data: string;
+namespace dmHelper {
+ export class BackgroundMusic implements Record {
+    private _name: string;
+    private _data: string;
 
-  constructor(name: string, data: string) {
-    this._name = name;
-    this._data = data;
-  }
+    constructor(name: string, data: string) {
+      this._name = name;
+      this._data = data;
+    }
 
-  get name(): string {
-    return this._name;
-  }
+    get name(): string {
+      return this._name;
+    }
 
-  set name(value: string) {
-    this._name = value;
-  }
+    set name(value: string) {
+      this._name = value;
+    }
 
-  get data(): string {
-    return this._data;
-  }
+    get data(): string {
+      return this._data;
+    }
 
-  set data(value: string) {
-    this._data = value;
+    set data(value: string) {
+      this._data = value;
+    }
   }
 }

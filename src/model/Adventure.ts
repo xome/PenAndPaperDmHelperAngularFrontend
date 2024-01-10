@@ -1,24 +1,27 @@
-class Adventure {
-  private _name: string;
-  private _chapters: Chapter[];
+namespace dmHelper {
+  export class Adventure {
+    private _name: string;
+    private _chapters: Chapter[];
 
-  constructor(name: string, chapters: Chapter[]) {
-    this._name = name;
-    this._chapters = chapters;
-  }
+    constructor(name: string, chapters: Chapter[]) {
+      this._name = name;
+      this._chapters = chapters;
+    }
 
-  get name(): string {
-    return this._name;
-  }
-  set name(value: string) {
-    this._name = value;
-  }
+    get name(): string {
+      return this._name;
+    }
 
-  get chapters(): Chapter[] {
-    return this._chapters;
-  }
+    set name(value: string) {
+      this._name = value;
+    }
 
-  set chapters(value: Chapter[]) {
-    this._chapters = value;
+    get chapters(): Chapter[] {
+      return this._chapters;
+    }
+
+    set chapters(value: Chapter[]) {
+      this._chapters = value;
+    }
   }
 }
