@@ -28,18 +28,25 @@ const dockerEnvFile: string = process.env['DOCKER_ENV_FILE'];
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
 
+beforeAll(async () => {
+  container = await
+    new DockerComposeEnvironment(composePath, composeFile)
+      .withEnvironmentFile(dockerEnvFile)
+      .up();
+});
+
+afterAll(async () => {
+  if (container != undefined)
+    await container.down();
+});
+
 export function setupBrowserHooks(path = ''): void {
 
   beforeAll(async () => {
     browser = await puppeteer.launch({
       headless: 'new'
     });
-    container = await
-      new DockerComposeEnvironment(composePath, composeFile)
-        .withEnvironmentFile(dockerEnvFile)
-        .up();
   });
-
 
   beforeEach(async () => {
     page = await browser.newPage();
@@ -53,8 +60,6 @@ export function setupBrowserHooks(path = ''): void {
 
   afterAll(async () => {
     await browser.close();
-    if (container != undefined)
-      await container.down();
   });
 
 }
