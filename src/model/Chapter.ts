@@ -4,10 +4,10 @@ namespace dmHelper {
     private _name: string;
     private _subheader: string;
     private _approximateDurationInMinutes: number;
-    private _records: [Record];
+    private _records: Record[];
 
 
-    constructor(name: string, subheader: string, approximateDurationInMinutes: number, records: [Record]) {
+    constructor(name: string, subheader: string, approximateDurationInMinutes: number, records: Record[]) {
       this._name = name;
       this._subheader = subheader;
       this._approximateDurationInMinutes = approximateDurationInMinutes;
@@ -27,7 +27,7 @@ namespace dmHelper {
       return this._approximateDurationInMinutes;
     }
 
-    get records(): [Record] {
+    get records(): Record[] {
       return this._records;
     }
 
@@ -44,7 +44,7 @@ namespace dmHelper {
       this._approximateDurationInMinutes = value;
     }
 
-    set records(value: [Record]) {
+    set records(value: Record[]) {
       this._records = value;
     }
   }
