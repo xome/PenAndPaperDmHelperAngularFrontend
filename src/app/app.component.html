@@ -1,6 +1,10 @@
-<mat-drawer-container autosize>
-  <mat-drawer #drawer mode="over">hello</mat-drawer>
-  <button mat-raised-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over">
+    hello
+  </mat-drawer>
+  <mat-drawer-content>
+    <button mat-raised-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+  </mat-drawer-content>
 </mat-drawer-container>
 
 <router-outlet></router-outlet>

@@ -95,7 +95,8 @@
           "builder": "@puppeteer/ng-schematics:puppeteer",
           "options": {
             "devServerTarget": "FrontendAngular:serve",
-            "testRunner": "jasmine"
+            "testRunner": "jasmine",
+            "port": 4201
           },
           "configurations": {
             "production": {
