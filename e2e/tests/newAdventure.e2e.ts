@@ -85,6 +85,8 @@ describe('Landing on the home page', function () {
     expect(chapter.innerHTML).toContain(firstChapter.approximateDurationInMinutes.toString());
     expect(chapter.innerHTML).toContain(firstChapter.subheader);
 
+    const addTextSelector = `chapter[name="${firstChapter.name}"] .addText`
+    await page.waitForSelector(addTextSelector);
 
 
   });
