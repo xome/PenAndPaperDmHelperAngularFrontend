@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "rootDir": "tests/",
+    "rootDirs": ["tests/", "../src/"],
     "outDir": "build/",
     "types": ["jasmine"]
   },

@@ -1,8 +1,6 @@
 import {setupBrowserHooks, getBrowserState} from './utils';
 import Chapter = dmHelper.Chapter;
-import Text = dmHelper.Text;
 import EnvironmentLightning = dmHelper.EnvironmentLightning;
-
 describe('Landing on the home page', function () {
   setupBrowserHooks();
 
