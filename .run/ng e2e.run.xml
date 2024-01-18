@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ng e2e" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="ng" />
+    </scripts>
+    <arguments value="e2e" />
+    <node-interpreter value="project" />
+    <envs>
+      <env name="DEBUG" value="testcontainers*" />
+      <env name="DOCKER_COMPOSE_FILE" value="docker-compose-backend.yml" />
+      <env name="DOCKER_COMPOSE_PATH" value=".\e2e" />
+      <env name="DOCKER_ENV_FILE" value="docker-backend.env" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
