@@ -204,9 +204,8 @@ describe('Landing on the home page', function () {
     const saveAdventureSelector = '#save';
     await page.click(saveAdventureSelector);
 
-    const adventuresSelector = 'adventures'
-    await page.waitForSelector('adventures');
-    expect(getInnerHtml(page, adventuresSelector)).toContain(adventureName);
+    const adventureSelector = `adventures adventure[name="${adventureName}"]`
+    await page.waitForSelector(adventureSelector);
 
   });
 
