@@ -1,5 +1,5 @@
-namespace dmHelper {
- export class BackgroundMusic implements Record {
+import {Record} from "./record";
+export class BackgroundMusic implements Record {
     private _name: string;
     private _data: string;
 
@@ -23,5 +23,4 @@ namespace dmHelper {
     set data(value: string) {
       this._data = value;
     }
-  }
 }
