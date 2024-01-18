@@ -1,9 +1,8 @@
-import {setupBrowserHooks, getBrowserState, setupBackend, rgbToHex, uploadFile} from './utils';
+import {getBrowserState, getInnerHtml, rgbToHex, setupBackend, setupBrowserHooks, uploadFile} from './utils';
 import {Chapter} from "../../src/model/chapter";
 import {EnvironmentLightning} from "../../src/model/environment-lightning";
 import {Text} from "../../src/model/text";
-import {ElementHandle, Page} from "puppeteer";
-import path from "path";
+import {Page} from "puppeteer";
 
 describe('Landing on the home page', function () {
   setupBrowserHooks();
@@ -26,7 +25,8 @@ describe('Landing on the home page', function () {
     const buttonToCreateNewAdventure =
       await page.locator(buttonToCreateNewAdventureSelector).wait() as HTMLElement;
     expect(buttonToCreateNewAdventure).toBeTruthy();
-    expect(buttonToCreateNewAdventure.innerHTML).toBeTruthy();
+
+    expect(await getInnerHtml(page, buttonToCreateNewAdventureSelector)).toBeTruthy();
 
     await page.click(buttonToCreateNewAdventureSelector);
 
@@ -34,9 +34,7 @@ describe('Landing on the home page', function () {
     const editAdventureComponentSelector = 'edit-adventure';
     await page.waitForSelector(editAdventureComponentSelector);
 
-    const editAdventurePage =
-      await page.locator(editAdventureComponentSelector).wait() as HTMLElement;
-    expect(editAdventurePage.innerHTML).toBeTruthy();
+    expect(getInnerHtml(page, editAdventureComponentSelector)).toBeTruthy();
 
     const adventureNameInputSelector = '#name';
     await page.waitForSelector(adventureNameInputSelector);
@@ -66,10 +64,10 @@ describe('Landing on the home page', function () {
     const chapterSelector = 'edit-chapter';
     await page.waitForSelector(chapterSelector);
 
-    const chapter = await page.locator(chapterSelector).wait() as HTMLElement;
-    expect(chapter.innerHTML).toContain(firstChapter.name);
-    expect(chapter.innerHTML).toContain(firstChapter.approximateDurationInMinutes.toString());
-    expect(chapter.innerHTML).toContain(firstChapter.subheader);
+    const chapterHtml = await getInnerHtml(page, chapterSelector);
+    expect(chapterHtml).toContain(firstChapter.name);
+    expect(chapterHtml).toContain(firstChapter.approximateDurationInMinutes.toString());
+    expect(chapterHtml).toContain(firstChapter.subheader);
 
 
     // Add Records
@@ -105,8 +103,7 @@ describe('Landing on the home page', function () {
     const textSelector = `chapter[name="${firstChapter.name}"] text`
     await page.waitForSelector(textSelector);
 
-    const textRecord = await page.locator(textSelector).wait() as HTMLElement;
-    expect(textRecord.innerText).toBe(text.text);
+    expect(await getInnerHtml(page, textSelector)).toContain(text.text);
 
     // Add EnvironmentLightning
 
@@ -141,9 +138,9 @@ describe('Landing on the home page', function () {
     const colorRecordSelector = `chapter[name="${firstChapter.name}"] environment-lightning`;
     await page.waitForSelector(colorRecordSelector);
 
-    const environmentLightning = await page.locator(colorRecordSelector).wait();
-    expect(environmentLightning.innerHTML).toContain(envLight.brightness.toPrecision(2));
-    expect(environmentLightning.innerHTML).toContain(rgbToHex(envLight.rgb));
+    const envLightHtml = getInnerHtml(page, colorRecordSelector);
+    expect(envLightHtml).toContain(envLight.brightness.toPrecision(2));
+    expect(envLightHtml).toContain(rgbToHex(envLight.rgb));
 
     // Add BackgroundMusic
     await page.click(addBackgroundMusicSelector);
@@ -161,9 +158,7 @@ describe('Landing on the home page', function () {
 
     const backgroundMusicSelector = `chapter[name="${firstChapter.name}"] background-music`;
     await page.waitForSelector(backgroundMusicSelector);
-    const backgroundMusic = await page.locator(backgroundMusicSelector).wait();
-    expect(backgroundMusic).toBeTruthy();
-    expect(backgroundMusic.innerHTML).toContain('Bullet Train');
+    expect(getInnerHtml(page, backgroundMusicSelector)).toContain('Bullet Train');
     // data is a bit hard to assert
 
     // Add Picture
@@ -203,14 +198,15 @@ describe('Landing on the home page', function () {
     await page.click(confirmRecordSelector);
 
     const chapterLinkSelector = `chapter[name="${firstChapter.name}"] chapterLink`;
-    const chapterLink = await page.locator(chapterLinkSelector).wait() as HTMLElement;
-    expect(chapterLink.innerHTML).toContain(secondChapter.name);
+    await page.waitForSelector(chapterLinkSelector)
+    expect(getInnerHtml(page, chapterLinkSelector)).toContain(secondChapter.name);
 
     const saveAdventureSelector = '#save';
     await page.click(saveAdventureSelector);
 
-    const adventuresComponent = await page.locator('adventures').wait() as HTMLElement;
-    expect(adventuresComponent.innerHTML).toContain(adventureName);
+    const adventuresSelector = 'adventures'
+    await page.waitForSelector('adventures');
+    expect(getInnerHtml(page, adventuresSelector)).toContain(adventureName);
 
   });
 

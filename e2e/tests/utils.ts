@@ -3,7 +3,7 @@ import {DockerComposeEnvironment} from "testcontainers";
 import {
   StartedDockerComposeEnvironment
 } from "testcontainers/build/docker-compose-environment/started-docker-compose-environment";
-import {ElementHandle} from "puppeteer";
+import {ElementHandle, Page} from "puppeteer";
 import path from "path";
 
 const baseUrl = process.env['baseUrl'] ?? 'http://localhost:4200/';
@@ -112,4 +112,8 @@ export async function uploadFile(inputSelector: string, filePath: string) {
     await elementHandle.uploadFile(path.relative(process.cwd(), __dirname + filePath));
     await elementHandle.evaluate(upload => upload.dispatchEvent(new Event('change', {bubbles: true})));
   }
+}
+
+export async function getInnerHtml(page: Page, selector: string) {
+  return await page.$eval(selector, element => element.innerHTML);
 }
