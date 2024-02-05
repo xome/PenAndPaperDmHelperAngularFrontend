@@ -1,0 +1,33 @@
+<mat-expansion-panel (opened)="expanded = true"
+                     (closed)="expanded = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ chapter.name }}
+    </mat-panel-title>
+    <mat-panel-description>
+      <span>{{ chapter.subheader }}</span>
+      <span>{{ chapter.approximateDurationInMinutes }} minutes</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <form #editChapterForm="ngForm" id="editChapterForm" (ngSubmit)="editChapter()">
+    <mat-form-field>
+      <mat-label>change name</mat-label>
+      <input name="name" id="name" matInput [(ngModel)]="chapterToEdit.name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>change subheader</mat-label>
+      <input name="subheader" id="subheader" matInput [(ngModel)]="chapterToEdit.subheader" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>
+        change duration
+      </mat-label>
+      <input name="approximateDurationInMinutes" id="approximateDurationInMinutes" type="number" min="0" matInput
+             [(ngModel)]="chapterToEdit.approximateDurationInMinutes" required>
+    </mat-form-field>
+    <button type="submit" mat-icon-button>
+      <mat-icon>check</mat-icon>
+    </button>
+  </form>
+
+</mat-expansion-panel>

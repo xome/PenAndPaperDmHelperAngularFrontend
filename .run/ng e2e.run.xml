@@ -5,7 +5,7 @@
     <scripts>
       <script value="ng" />
     </scripts>
-    <arguments value="e2e" />
+    <arguments value="e2e --delete-output-path" />
     <node-interpreter value="project" />
     <envs>
       <env name="DEBUG" value="testcontainers*" />

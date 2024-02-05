@@ -15,8 +15,4 @@ export class AdventuresComponent implements OnInit{
     ngOnInit(): void {
         //todo: load adventures
     }
-
-  newAdventure() {
-
-  }
 }

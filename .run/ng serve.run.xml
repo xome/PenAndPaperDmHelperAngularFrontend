@@ -5,7 +5,7 @@
     <scripts>
       <script value="ng" />
     </scripts>
-    <arguments value="serve " />
+    <arguments value="serve --delete-output-path" />
     <node-interpreter value="project" />
     <envs>
       <env name="URL_BACKEND" value="http://localhost:8080" />

@@ -1,0 +1,65 @@
+<h1>Create a new Adventure</h1>
+<mat-form-field appearance="outline">
+  <mat-label>Name of the Adventure</mat-label>
+  <input matInput
+         id="name"
+         type="text"
+         required
+         [(ngModel)]="adventureName">
+</mat-form-field>
+<mat-accordion class="chapter-accordion" multi>
+  <mat-expansion-panel id="addChapter">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>add</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description>
+        Add a new Chapter to the Adventure!
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form id="newChapterForm" #newChapterForm="ngForm" (ngSubmit)="addNewChapter()">
+      <mat-form-field>
+        <mat-label>Name of the Chapter</mat-label>
+        <input matInput
+               type="text"
+               #chapterName
+               id="chapterName"
+               [(ngModel)]="newChapter.name"
+               name="name"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Subheader</mat-label>
+        <input matInput
+               type="text"
+               #subheader
+               id="subheader"
+               [(ngModel)]="newChapter.subheader"
+               name="subheader"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Duration in minutes</mat-label>
+        <input matInput
+               type="number"
+               min="0"
+               id="approximateDurationInMinutes"
+               #approximateDurationInMinutes
+               [(ngModel)]="newChapter.approximateDurationInMinutes"
+               name="approximateDurationInMinutes"
+               required>
+      </mat-form-field>
+      <button type="submit" mat-icon-button id="confirmChapter">
+        <mat-icon>check</mat-icon>
+      </button>
+    </form>
+  </mat-expansion-panel>
+
+  <edit-chapter
+    *ngFor="let chapter of chapters;
+              index as chapterIndex;
+              trackBy: trackChapters"
+    [chapter]="chapter"
+    (chapterChange)="chapterChanged($event, chapterIndex)">
+  </edit-chapter>
+</mat-accordion>

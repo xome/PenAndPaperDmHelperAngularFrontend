@@ -1,2 +1,32 @@
-mat-drawer-container { flex: 1 1 auto; }
-.mat-drawer-content {overflow: hidden !important;}
+:host {
+  min-height: 100%;
+  height: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container {
+  min-height: 100%;
+}
+
+.go-home {
+  text-underline: none;
+  color: inherit;
+  cursor: pointer;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: start;
+}
+
+mat-toolbar {
+  margin-bottom: 0.5em !important;
+}
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

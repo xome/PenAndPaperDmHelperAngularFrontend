@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import {AdventuresComponent} from "./adventures/adventures.component";
-import {EditAdventureComponent} from "./edit-adventure/edit-adventure.component";
+import {AdventuresComponent} from "./viewer/components/adventures/adventures.component";
+import {EditAdventureComponent} from "./create-and-edit/components/edit-adventure/edit-adventure.component";
 
 export const routes: Routes = [
   {path: '', component: AdventuresComponent},

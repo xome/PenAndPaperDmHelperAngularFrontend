@@ -1,10 +1,12 @@
-<mat-drawer-container>
-  <mat-drawer #drawer mode="over">
-    hello
-  </mat-drawer>
-  <mat-drawer-content>
-    <button mat-raised-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-  </mat-drawer-content>
-</mat-drawer-container>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" #sidenav>Sidenav content</mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span routerLink="/" class="go-home">DungeonMasterHelper</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

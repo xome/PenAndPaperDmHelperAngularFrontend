@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
+  max-width: 80em;
+}
+
+
+#addChapter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: stretch;
+}
+
+.chapter-accordion .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 2em;
+}

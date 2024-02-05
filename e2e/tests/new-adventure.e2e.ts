@@ -1,7 +1,7 @@
 import {getBrowserState, getInnerHtml, rgbToHex, setupBackend, setupBrowserHooks, uploadFile} from './utils';
-import {Chapter} from "../../src/model/chapter";
-import {EnvironmentLightning} from "../../src/model/environment-lightning";
-import {Text} from "../../src/model/text";
+import {Chapter} from "../../src/app/model/chapter";
+import {EnvironmentLightning} from "../../src/app/model/environment-lightning";
+import {Text} from "../../src/app/model/text";
 import {Page} from "puppeteer";
 
 describe('Landing on the home page', function () {

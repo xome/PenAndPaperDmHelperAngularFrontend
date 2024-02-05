@@ -21,7 +21,7 @@ describe('AdventureComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should offer the opportunity to create a new Adventure', () => {
+  it('should offer the opportunity to create a new Adventure', async () => {
     const navigateSpy = spyOn(router, 'navigate');
 
     const compiled = fixture.nativeElement as HTMLElement;
@@ -31,9 +31,8 @@ describe('AdventureComponent', () => {
     button.click();
 
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(navigateSpy).toHaveBeenCalledWith(['/newAdventure']);
-    });
+    await fixture.whenStable();
+    expect(navigateSpy).toHaveBeenCalledWith(['/newAdventure']);
 
   });
 

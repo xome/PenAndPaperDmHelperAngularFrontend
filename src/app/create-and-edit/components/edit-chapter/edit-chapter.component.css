@@ -1,0 +1,9 @@
+mat-panel-description span, mat-panel-title {
+  flex: 1 1 auto;
+  inline-size: 20em;
+  overflow-wrap: break-word;
+}
+
+.chapter-accordion .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 2em;
+}
