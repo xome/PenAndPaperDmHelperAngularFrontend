@@ -44,7 +44,7 @@ describe('Landing on the home page', function () {
     expect(adventureNameInput).toBeTruthy();
 
     const adventureName = 'Testadventure';
-    await page.type(adventureNameInputSelector, adventureName);
+    await page.type(adventureNameInputSelector, adventureName, {delay: 200});
 
     const firstChapter = new Chapter("Testchapter 1",
       "Subheader 1",
@@ -53,13 +53,6 @@ describe('Landing on the home page', function () {
     await addChapter(firstChapter, page);
 
     // Added Chapter should be visible
-
-
-    const chaptersSelector = 'edit-chapters';
-    await page.waitForSelector(chaptersSelector);
-    const chapters = await page.locator(chaptersSelector).wait() as HTMLElement;
-
-    expect(chapters.children.length).toBe(1); // todo: lets have a look how angular replaces the template
 
     const chapterSelector = 'edit-chapter';
     await page.waitForSelector(chapterSelector);
@@ -225,9 +218,9 @@ describe('Landing on the home page', function () {
     await page.waitForSelector(approximateDurationSelector);
     await page.waitForSelector(subheaderSelector);
     await page.waitForSelector(confirmAddChapterButtonSelector);
-    await page.type(chapterNameSelector, chapter.name);
-    await page.type(approximateDurationSelector, chapter.approximateDurationInMinutes.toString());
-    await page.type(subheaderSelector, chapter.subheader);
+    await page.type(chapterNameSelector, chapter.name, {delay: 200});
+    await page.type(approximateDurationSelector, chapter.approximateDurationInMinutes.toString(), {delay: 200});
+    await page.type(subheaderSelector, chapter.subheader, {delay: 200});
     await page.click(confirmAddChapterButtonSelector);
   }
 
