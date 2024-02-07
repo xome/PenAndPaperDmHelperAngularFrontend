@@ -6,10 +6,10 @@ name: Push
 # documentation.
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+#  push:
+#    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
 
 env:
   # Use docker.io for Docker Hub if empty
