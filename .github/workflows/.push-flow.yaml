@@ -1,0 +1,47 @@
+name: Docker
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: xome42/pen-and-paper-dm-helper-frontend-angular
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_HUB_ACCOUNTNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.10
+      - name : use npm to test and build app
+        id: build
+        run: npm run build:ci
+      - name: build app Docker image
+        run: docker build . -f Dockerfile -t ${{ env.IMAGE_NAME }}
+      - name: push app image to Docker Hub
+        run: docker push ${{ env.IMAGE_NAME }}
