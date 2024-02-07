@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
+    "clean": "rimraf ./dist",
     "build:ci": "npm run clean && npm run test && npm run e2e && npm run build:prod"
   },
   "private": true,
