@@ -6,10 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --browsers ChromeHeadless",
     "e2e": "ng e2e",
-    "clean": "rimraf ./dist",
-    "build:ci": "npm run clean && npm run test && npm run e2e && npm run build:prod"
+    "build:ci": "npm run test && npm run e2e && npm run build:prod"
   },
   "private": true,
   "dependencies": {
