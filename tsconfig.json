@@ -22,7 +22,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -35,8 +35,5 @@
     "e2e"
   ],
   "exclude": [
-  ],
-  "types": [
-    "node"
   ]
 }

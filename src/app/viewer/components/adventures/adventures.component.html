@@ -3,3 +3,7 @@
     <mat-icon>add</mat-icon>
   </button>
 </div>
+
+@for (adventure of adventures; track adventure.name) {
+  <p>{{ adventure.name }}</p>
+}
