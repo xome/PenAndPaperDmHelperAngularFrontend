@@ -23,11 +23,11 @@ describe('EditChapterComponent', () => {
   describe('with test chapter', () => {
 
     const chapter = new Chapter("Testchapter", "Subheader", 10, []);
-    const originalChapter = new Chapter(chapter.name, chapter.subheader, chapter.approximateDurationInMinutes, chapter.records);
 
-    beforeEach(() => {
+    beforeEach(async () => {
       component.chapter = chapter;
       fixture.detectChanges();
+      await fixture.whenStable();
     });
 
     it('should create component', () => {

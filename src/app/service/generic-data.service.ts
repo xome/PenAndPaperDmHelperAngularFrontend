@@ -13,7 +13,6 @@ export class GenericDataService {
   }
 
   get<T>(url: string, params?: HttpParams): Observable<T> {
-    console.log(JSON.stringify(environment));
     return this.httpClient
       .get<T>(this.baseUrl + url, {params});
   }

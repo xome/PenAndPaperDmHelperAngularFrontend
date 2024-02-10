@@ -1,8 +1,10 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AdventuresComponent} from "./adventures.component";
-import {Router} from "@angular/router";
+import {Router, RouterLinkWithHref} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientModule} from "@angular/common/http";
+import {By} from "@angular/platform-browser";
 
 describe('AdventureComponent', () => {
   let component: AdventuresComponent;
@@ -11,9 +13,12 @@ describe('AdventureComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdventuresComponent, BrowserAnimationsModule, RouterTestingModule.withRoutes([])],
-      providers: [
-      ]
+      imports: [AdventuresComponent, BrowserAnimationsModule, HttpClientModule,
+        RouterTestingModule.withRoutes([{
+          path: 'newAdventure',
+          component: AdventuresComponent // does not matter for this test. Could be a DummyComponent too
+        }])],
+      providers: []
     }).compileComponents();
     fixture = TestBed.createComponent(AdventuresComponent);
     router = TestBed.inject(Router);
@@ -22,18 +27,17 @@ describe('AdventureComponent', () => {
   });
 
   it('should offer the opportunity to create a new Adventure', async () => {
-    const navigateSpy = spyOn(router, 'navigate');
-
     const compiled = fixture.nativeElement as HTMLElement;
 
-    const button = compiled.querySelector('#newAdventure') as HTMLElement;
+    const button = compiled.querySelector('#newAdventure');
     expect(button).not.toBeNull();
-    button.click();
 
-    fixture.detectChanges();
-    await fixture.whenStable();
-    expect(navigateSpy).toHaveBeenCalledWith(['/newAdventure']);
+    const routerLinkInstance = fixture
+      .debugElement
+      .query(By.css('#newAdventure'))
+      .injector.get(RouterLinkWithHref);
 
+    expect(routerLinkInstance['commands']).toEqual(['newAdventure']);
   });
 
 
