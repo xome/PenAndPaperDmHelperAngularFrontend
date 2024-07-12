@@ -64,19 +64,19 @@ describe('Landing on the home page', function () {
 
 
     // Add Records
-    const addTextSelector = `chapter[name="${firstChapter.name}"] .addText`;
+    const addTextSelector = `chapter[name="${firstChapter.name}"] .add-text`;
     await page.waitForSelector(addTextSelector);
 
-    const addBackgroundMusicSelector = `chapter[name="${firstChapter.name}"] .addBackgroundMusic`;
+    const addBackgroundMusicSelector = `chapter[name="${firstChapter.name}"] .add-background-music`;
     await page.waitForSelector(addBackgroundMusicSelector);
 
-    const addChapterLinkSelector = `chapter[name="${firstChapter.name}"] .addChapterLink`;
+    const addChapterLinkSelector = `chapter[name="${firstChapter.name}"] .add-chapter-link`;
     await page.waitForSelector(addChapterLinkSelector);
 
-    const addEnvLightSelector = `chapter[name="${firstChapter.name}"] .addEnvironmentLightning`;
+    const addEnvLightSelector = `chapter[name="${firstChapter.name}"] .add-environment-lightning`;
     await page.waitForSelector(addEnvLightSelector);
 
-    const addPictureSelector = `chapter[name="${firstChapter.name}"] .addPicture`;
+    const addPictureSelector = `chapter[name="${firstChapter.name}"] .add-picture`;
     await page.waitForSelector(addPictureSelector);
 
     // Add Text
@@ -84,10 +84,10 @@ describe('Landing on the home page', function () {
 
     await page.click(addTextSelector);
 
-    const textInputSelector = '#textInput';
+    const textInputSelector = '#text-input';
     await page.waitForSelector(textInputSelector);
 
-    const confirmRecordSelector = '#confirmNewRecord';
+    const confirmRecordSelector = '#confirm-new-record';
     await page.waitForSelector(confirmRecordSelector);
 
     await page.type(textInputSelector, text.text);

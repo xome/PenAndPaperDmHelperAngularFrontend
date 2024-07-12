@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {Chapter} from "../../../model/chapter";
+import {Text} from "../../../model/text";
 import {MatInputModule} from "@angular/material/input";
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -26,17 +27,28 @@ export class EditChapterComponent implements OnInit {
   @Output() chapterChange = new EventEmitter<Chapter>();
   expanded = false;
   chapterToEdit!: Chapter;
+  newText!: Text;
+
+  recordToAddIsText = false;
 
   ngOnInit(): void {
     this.chapterToEdit = new Chapter(this.chapter.name,
       this.chapter.subheader,
       this.chapter.approximateDurationInMinutes,
       this.chapter.records);
+
+    this.newText = new Text("");
+
   }
 
   editChapter() {
     this.chapter.name = this.chapterToEdit.name;
     this.chapter.subheader = this.chapterToEdit.subheader;
     this.chapter.approximateDurationInMinutes = this.chapterToEdit.approximateDurationInMinutes;
+  }
+
+  addText() {
+    this.chapter.records.push(this.newText);
+    this.newText = new Text("");
   }
 }
