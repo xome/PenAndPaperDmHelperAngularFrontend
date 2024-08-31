@@ -1,12 +1,24 @@
 :host {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-content: center;
   align-items: stretch;
-  max-width: 80em;
+  min-width: 100%;
+  min-height: 100%;
 }
 
+#chapterList {
+  flex: 0 1 auto;
+  min-height: 100%;
+  width: 20%;
+}
+
+#adventureNameAndRecords {
+  flex: 0 1 auto;
+  min-height: 100%;
+  width: 80%
+}
 
 #addChapter {
   display: flex;

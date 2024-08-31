@@ -8,6 +8,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {Chapter} from "../../../model/chapter";
 import {NgForOf} from "@angular/common";
 import {EditChapterComponent} from "../edit-chapter/edit-chapter.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @Component({
   selector: 'edit-adventure',
@@ -21,6 +23,8 @@ import {EditChapterComponent} from "../edit-chapter/edit-chapter.component";
     MatExpansionModule,
     NgForOf,
     EditChapterComponent,
+    MatSidenavModule,
+    MatListModule,
   ],
   templateUrl: './edit-adventure.component.html',
   styleUrl: './edit-adventure.component.css'
